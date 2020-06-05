@@ -37,5 +37,7 @@
 
 
 
-These separate instances are used to 
+These separate instances are used to spread out traffic, making applications run smoother.
+
+If an instance, fails, user joins a different instance or a new thread gets created.
 
