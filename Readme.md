@@ -39,5 +39,46 @@
 
 These separate instances are used to spread out traffic, making applications run smoother.
 
+- each instance has independent data, etc. 
+  - consumes full amount of ram 
+    - so sharing data is tougher than worker threads
+
 If an instance, fails, user joins a different instance or a new thread gets created.
+
+
+
+
+
+# Worker Threads
+
+## What are they?
+
+- Similar to Web Workers 
+- Like threads in other programming langauges but are not
+
+
+
+**JavaScript is single threaded** (arguably but assume this)
+
+
+
+```js
+const { Worker, isMainThread, parentPort } = require('worker_threads');
+if (isMainThread) {
+  // this code is executed in the main thread 
+  
+ 	// create the worker
+  const worker = new Worker(__filename);
+  
+  // Listen for messages from the worker and print them 
+  worker.on('message', (msg) => {console.log(msg); });
+} else {
+  // this code is executed in the worker and not in the main thread.
+  
+  // send a message to the main thread.
+  parentPort.postMessage('Hello world!');
+}
+```
+
+
 
